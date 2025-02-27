@@ -11,13 +11,9 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios(
-        'http://api.marketstack.com/v1/eod',
-        {
-          headers: { 'X-API-KEY': '745e981c5b38d30700cfad03eec01af8' }
-        }
-      );
-      setStockData(result.data);
+      const result = await axios.get('http://api.marketstack.com/v1/eod?access_key=745e981c5b38d30700cfad03eec01af8&symbols=AAPL');
+      console.log(result.data.data);
+      setStockData(result.data.data);
     };
     fetchData();
   }, []);
